@@ -35,7 +35,7 @@
   }
 
   .toolbar {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -299,7 +299,7 @@
 </style>
 
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
+<div class="toolbar" role="banner" *ngIf="true">
   <img
     width="40"
     alt="Angular Logo"
@@ -315,7 +315,12 @@
     </a>
 </div>
 
-<div class="content" role="main">
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<div class="content" role="main" *ngIf="false">
 
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
@@ -530,5 +535,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-
-<router-outlet></router-outlet>
