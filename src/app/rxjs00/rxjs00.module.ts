@@ -4,13 +4,12 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { Rxjs00RoutingModule } from './rxjs00-routing.module';
 import { Rxjs00Component } from './rxjs00.component';
-import { Button } from 'protractor';
-
 
 @NgModule({
   declarations: [Rxjs00Component],
   imports: [
     CommonModule,
+    MatButtonModule,
     Rxjs00RoutingModule
   ]
 })
