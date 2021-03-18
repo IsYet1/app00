@@ -7,4 +7,12 @@
     <button mat-raised-button (click)="buttonClicked($event)" >Button A</button>
     <button mat-raised-button (click)="addDataButtonClick($event)">Both GEMS and COA Data</button>
   </div>
+  <div>
+    <div>More buttons</div>
+    <button mat-raised-button (click)="doNext($event)" >Next</button>
+    <div>
+      Output here
+      <div *ngFor="let item of nextTest$ | async">{{ item }}</div>
+    </div>
+  </div>
 </div>

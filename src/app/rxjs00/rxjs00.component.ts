@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
+import { from, Observable, of, Subject } from 'rxjs';
 import { map, mergeMap, pluck, tap } from 'rxjs/operators';
 
 type AttrbIdType = 'legal_name' | 'date_of_formation';
@@ -40,6 +40,7 @@ const gems = {
 })
 export class Rxjs00Component implements OnInit {
 
+  nextTest$ = new Subject<any>();
   constructor() { }
 
   l0: level0 = new Map();
@@ -94,11 +95,11 @@ export class Rxjs00Component implements OnInit {
     attrbs.forEach(sourceDataAttrb => {
       this.getGemsData(sourceDataAttrb).subscribe(sourceData => {
         this.setLevel1(sourceDataAttrb, l1, sourceData, l1Obj);
-        l1Obj[sourceDataAttrb] = sourceData;
+        // l1Obj[sourceDataAttrb] = sourceData;
       })
     })
     this.l0.set(dataSource, l1);
-    this.l0Obj[dataSource] = l1Obj;
+    // this.l0Obj[dataSource] = l1Obj;
   }
 
   addCOADataToL0Map = () => {
@@ -110,11 +111,11 @@ export class Rxjs00Component implements OnInit {
     attrbs.forEach(sourceDataAttrb => {
       this.getCoaData('legal_name').subscribe(sourceData => {
         this.setLevel1(sourceDataAttrb, l1, sourceData, l1Obj);
-        l1Obj[sourceDataAttrb] = sourceData;
+        // l1Obj[sourceDataAttrb] = sourceData;
       })
     })
     this.l0.set(dataSource, l1);
-    this.l0Obj[dataSource] = l1Obj;
+    // this.l0Obj[dataSource] = l1Obj;
   }
 
   setLevel1 = (sourceDataAttrb: string, l1Map: level1, sourceData: level2, l1Obj: {}) => {
@@ -122,6 +123,9 @@ export class Rxjs00Component implements OnInit {
     l1Map.set(sourceDataAttrb, l2);
   }
 
+  doNext(btnEvent: MouseEvent) {
+    this.nextTest$.next(['one', 'two']);
+  }
 
 
 }
